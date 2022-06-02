@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teen Titans Go!</title>
+    <link rel="icon" href="icon.webp">
+    <script src="fabric copy.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <style>
+        #myCanvas {
+            background-color: white;
+            border: 7px double black;
+            border-radius: 15px;
+        }
+
+        body {
+            background: linear-gradient(to right, rgb(3, 215, 3) 15%, rgb(245, 142, 159) 27.5%, rgb(255, 55, 55) 60%, rgb(0, 132, 255) 75%, rgb(192, 1, 192) 100%);
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <h1><u>Teen Titans Go!</u></h1>
+        <h5>Press 1, 2, 3, 4 and 5 for Robin, Cyborg, Starfire, Raven and Beast Boy respectively.</h5>
+        <br>
+        <canvas id="myCanvas" height="650" width="1200"></canvas>
+    </center>
+
+    <script>
+        canvas = new fabric.Canvas('myCanvas');
+        titanIMG = '';
+        var imgX;
+        var imgY;
+        x = 1;
+        y = 1;
+        function titanImg(getIMG) {
+            fabric.Image.fromURL(getIMG, function (Img) {
+                titanIMG = Img;
+                titanIMG.scaleToWidth(275);
+                titanIMG.scaleToHeight(350);
+                titanIMG.set({
+                    top: y,
+                    left: x
+                })
+                canvas.add(titanIMG);
+            })
+        }
+        window.addEventListener('keydown', keydown);
+        function keydown(e) {
+            keyPressed = e.keyCode;
+            if (keyPressed == '49') {
+                y = 296;
+                x = 480;
+                titanImg('robin.png');
+                console.log('Robin');
+            }
+            if (keyPressed == '50') {
+                y = 130;
+                x = 605;
+                titanImg('cyborg.png');
+                console.log('Cyborg');
+            }
+            if (keyPressed == '51') {
+                y = 106;
+                x = 223;
+                titanImg('starfire.png');
+                console.log('Starfire');
+            }
+            if (keyPressed == '52') {
+                y = 10;
+                x = 807;
+                titanImg('raven.webp');
+                console.log('Raven');
+            }
+            if (keyPressed == '53') {
+                y = 10;
+                x = 10;
+                titanImg('beastBoy.png');
+                console.log('Beast Boy');
+            }
+        }
+    </script>
+</body>
+
+</html>
